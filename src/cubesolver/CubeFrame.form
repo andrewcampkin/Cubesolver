@@ -157,7 +157,7 @@
         </Property>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new java.awt.Canvas(){&#xa;    @Override&#xa;    public void paint(Graphics g)&#xa;    {&#xa;        super.paint(g);&#xa;        g.setColor(Color.RED);&#xa;        g.fill3DRect(10, 10, 60, 60, true);&#xa;    }&#xa;}"/>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new java.awt.Canvas(){&#xa;    @Override&#xa;    public void paint(Graphics g)&#xa;    {&#xa;        super.paint(g);&#xa;        g.setColor(Color.RED);&#xa;        g.fill3DRect(10, 10, 60, 60, true);&#xa;        drawCube(g);&#xa;    }&#xa;}"/>
       </AuxValues>
     </Component>
   </SubComponents>

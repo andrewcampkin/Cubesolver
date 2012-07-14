@@ -19,6 +19,7 @@ public class CubeFrame extends javax.swing.JFrame {
         checkScrambled();
         vertices = new Point[56];
         initVertices();
+        initVertexList();
         updateCube();
     }
 
@@ -45,6 +46,7 @@ public class CubeFrame extends javax.swing.JFrame {
                 super.paint(g);
                 g.setColor(Color.RED);
                 g.fill3DRect(10, 10, 60, 60, true);
+                drawCube(g);
             }
         };
 
@@ -255,6 +257,7 @@ public class CubeFrame extends javax.swing.JFrame {
     // My variables
     private Cube cube;
     private Point[] vertices;
+    private int[][] vertexList;
 
     /**
      * Helper method to check if the cube is solved yet.
@@ -274,7 +277,15 @@ public class CubeFrame extends javax.swing.JFrame {
         g.fill3DRect(10, 10, 15, 15, true);
         g.dispose();
     }
+    
+    private void drawCube(Graphics g){
+        
+    }
 
+    private void initVertexList(){
+        
+    }
+    
     private void initVertices() {
         vertices[0] = new Point(0, 3);
         vertices[1] = new Point(1, 2);
