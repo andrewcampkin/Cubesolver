@@ -148,6 +148,17 @@
       </Events>
     </Component>
     <Component class="java.awt.Canvas" name="canvas1">
+      <Properties>
+        <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[50, 50]"/>
+        </Property>
+        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[553, 335]"/>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new java.awt.Canvas(){&#xa;    @Override&#xa;    public void paint(Graphics g)&#xa;    {&#xa;        super.paint(g);&#xa;        g.setColor(Color.RED);&#xa;        g.fill3DRect(10, 10, 60, 60, true);&#xa;    }&#xa;}"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>

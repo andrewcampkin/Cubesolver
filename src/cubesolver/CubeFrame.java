@@ -2,6 +2,7 @@ package cubesolver;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Point;
 
 /**
  *
@@ -16,7 +17,9 @@ public class CubeFrame extends javax.swing.JFrame {
         initComponents();
         cube = new Cube();
         checkScrambled();
-        
+        vertices = new Point[56];
+        initVertices();
+        updateCube();
     }
 
     /**
@@ -35,7 +38,15 @@ public class CubeFrame extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jButton6 = new javax.swing.JButton();
-        canvas1 = new java.awt.Canvas();
+        canvas1 = new java.awt.Canvas(){
+            @Override
+            public void paint(Graphics g)
+            {
+                super.paint(g);
+                g.setColor(Color.RED);
+                g.fill3DRect(10, 10, 60, 60, true);
+            }
+        };
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -95,6 +106,9 @@ public class CubeFrame extends javax.swing.JFrame {
             }
         });
 
+        canvas1.setMinimumSize(new java.awt.Dimension(50, 50));
+        canvas1.setPreferredSize(new java.awt.Dimension(553, 335));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -151,25 +165,26 @@ public class CubeFrame extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         checkScrambled();
-        redraw();
+
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
         checkScrambled();
-        redraw();
+
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         checkScrambled();
-        redraw();
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+
         checkScrambled();
-        redraw();
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -178,7 +193,7 @@ public class CubeFrame extends javax.swing.JFrame {
             cube.scramble();
         }
         checkScrambled();
-        redraw();
+
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
@@ -237,11 +252,14 @@ public class CubeFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
-    
     // My variables
     private Cube cube;
-    
+    private Point[] vertices;
 
+    /**
+     * Helper method to check if the cube is solved yet.
+     */
+    // <editor-fold defaultstate="collapsed" desc="Check Scrambled Method">
     private void checkScrambled() {
         if (cube.isSolved()) {
             jLabel1.setText("Solved");
@@ -250,11 +268,50 @@ public class CubeFrame extends javax.swing.JFrame {
         }
     }
 
-    private void redraw() {
-        Graphics g = CubeCanvas.getGraphics();
-        g.setColor(Color.red);
-        g.drawRect(5, 5, 5, 5);
-        CubeCanvas.paint(g);
+    private void updateCube() {
+        java.awt.Graphics g = this.getGraphics();
+        g.setColor(java.awt.Color.red);
+        g.fill3DRect(10, 10, 15, 15, true);
         g.dispose();
+    }
+
+    private void initVertices() {
+        vertices[0] = new Point(0, 3);
+        vertices[1] = new Point(1, 2);
+        vertices[2] = new Point(2, 1);
+        vertices[3] = new Point(3, 0);
+        vertices[4] = new Point(1, 4);
+        vertices[5] = new Point(2, 3);
+        vertices[6] = new Point(3, 2);
+        vertices[7] = new Point(4, 1);
+        vertices[8] = new Point(2, 5);
+        vertices[9] = new Point(3, 4);
+        vertices[10] = new Point(4, 3);
+        vertices[11] = new Point(5, 2);
+        vertices[12] = new Point(3, 6);
+        vertices[13] = new Point(4, 5);
+        vertices[14] = new Point(5, 4);
+        vertices[15] = new Point(6, 3);
+        vertices[16] = new Point(0, 4);
+        vertices[17] = new Point(1, 5);
+        vertices[18] = new Point(2, 6);
+        vertices[19] = new Point(3, 7);
+        vertices[20] = new Point(4, 6);
+        vertices[21] = new Point(5, 5);
+        vertices[22] = new Point(6, 4);
+        vertices[23] = new Point(0, 5);
+        vertices[24] = new Point(1, 6);
+        vertices[25] = new Point(2, 7);
+        vertices[26] = new Point(3, 8);
+        vertices[27] = new Point(4, 7);
+        vertices[28] = new Point(5, 6);
+        vertices[29] = new Point(6, 5);
+        vertices[30] = new Point(0, 6);
+        vertices[31] = new Point(1, 7);
+        vertices[32] = new Point(2, 8);
+        vertices[33] = new Point(3, 9);
+        vertices[34] = new Point(4, 8);
+        vertices[35] = new Point(5, 7);
+        vertices[36] = new Point(6, 6);
     }
 }
