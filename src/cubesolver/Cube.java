@@ -729,17 +729,17 @@ public class Cube {
 		for (int i = 0; i < numOfMoves; i++) {
 			int nextDirection = (int) (Math.random() * 2);
 			if (nextDirection != 0 && nextDirection != 1) {
-				System.out.println("bad direction: " + nextDirection);
+				//System.out.println("bad direction: " + nextDirection);
 				continue;
 			}
 			int nextSlice = (int) (Math.random() * 9 + 1);
 			if (nextSlice < 1 || nextSlice > 9) {
-				System.out.println("bad slice number: " + nextSlice);
+				//System.out.println("bad slice number: " + nextSlice);
 				continue;
 			}
 			changeCube(nextDirection, nextSlice);
 		}
-		System.out.println("end of scramble");
+		//System.out.println("end of scramble");
 	}
 
 	/**
