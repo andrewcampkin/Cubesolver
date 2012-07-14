@@ -3,6 +3,7 @@ package cubesolver;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
+import java.awt.Polygon;
 
 /**
  *
@@ -17,10 +18,13 @@ public class CubeFrame extends javax.swing.JFrame {
         initComponents();
         cube = new Cube();
         checkScrambled();
+        //56 points to map out the cube
         vertices = new Point[56];
         initVertices();
+        //made up of 27 squares
+        vertexList = new int[27][4];
         initVertexList();
-        updateCube();
+        
     }
 
     /**
@@ -44,8 +48,6 @@ public class CubeFrame extends javax.swing.JFrame {
             public void paint(Graphics g)
             {
                 super.paint(g);
-                g.setColor(Color.RED);
-                g.fill3DRect(10, 10, 60, 60, true);
                 drawCube(g);
             }
         };
@@ -167,26 +169,26 @@ public class CubeFrame extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         checkScrambled();
-
+        drawCube(canvas1.getGraphics());
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
         checkScrambled();
-
+        drawCube(canvas1.getGraphics());
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         checkScrambled();
-
+        drawCube(canvas1.getGraphics());
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
 
         checkScrambled();
-
+        drawCube(canvas1.getGraphics());
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -195,7 +197,7 @@ public class CubeFrame extends javax.swing.JFrame {
             cube.scramble();
         }
         checkScrambled();
-
+        drawCube(canvas1.getGraphics());
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
@@ -271,21 +273,145 @@ public class CubeFrame extends javax.swing.JFrame {
         }
     }
 
-    private void updateCube() {
-        java.awt.Graphics g = this.getGraphics();
-        g.setColor(java.awt.Color.red);
-        g.fill3DRect(10, 10, 15, 15, true);
-        g.dispose();
-    }
-    
-    private void drawCube(Graphics g){
-        
+    private void drawCube(Graphics g) {
+        // here go through the list of vertices drawing a polygon
+        for (int i = 0; i < vertexList.length; i++) {//int[] i : vertexList) {
+            int[] xVals = new int[vertexList[i].length];
+            int[] yVals = new int[vertexList[i].length];
+            for (int j = 0; j < 4; j++) {
+                xVals[j] = 80 + 30 * (int) vertices[vertexList[i][j]].getX();
+                yVals[j] = 20 + 30 * (int) vertices[vertexList[i][j]].getY();
+            }
+            Polygon p = new Polygon(xVals, yVals, 4);
+            int face = 0, square = 0;
+            if (i < 9) {
+                face = 0;
+                square = i;
+            } else if (i < 18) {
+                face = 2;
+                square = i - 9;
+            } else {
+                face = 1;
+                square = i - 18;
+            }
+            cubeColor c = cube.cubeState[face][square];
+            Color nextColor = getColor(c);
+            g.setColor(nextColor);
+            g.fillPolygon(p);
+        }
     }
 
-    private void initVertexList(){
-        
+    private void initVertexList() {
+        vertexList[0][0] = 0;
+        vertexList[0][1] = 1;
+        vertexList[0][2] = 5;
+        vertexList[0][3] = 4;
+        vertexList[1][0] = 1;
+        vertexList[1][1] = 2;
+        vertexList[1][2] = 6;
+        vertexList[1][3] = 5;
+        vertexList[2][0] = 2;
+        vertexList[2][1] = 3;
+        vertexList[2][2] = 7;
+        vertexList[2][3] = 6;
+        vertexList[3][0] = 4;
+        vertexList[3][1] = 5;
+        vertexList[3][2] = 9;
+        vertexList[3][3] = 8;
+        vertexList[4][0] = 5;
+        vertexList[4][1] = 6;
+        vertexList[4][2] = 10;
+        vertexList[4][3] = 9;
+        vertexList[5][0] = 6;
+        vertexList[5][1] = 7;
+        vertexList[5][2] = 11;
+        vertexList[5][3] = 10;
+        vertexList[6][0] = 8;
+        vertexList[6][1] = 9;
+        vertexList[6][2] = 13;
+        vertexList[6][3] = 12;
+        vertexList[7][0] = 9;
+        vertexList[7][1] = 10;
+        vertexList[7][2] = 14;
+        vertexList[7][3] = 13;
+        vertexList[8][0] = 10;
+        vertexList[8][1] = 11;
+        vertexList[8][2] = 15;
+        vertexList[8][3] = 14;
+        vertexList[9][0] = 0;
+        vertexList[9][1] = 4;
+        vertexList[9][2] = 17;
+        vertexList[9][3] = 16;
+        vertexList[10][0] = 4;
+        vertexList[10][1] = 8;
+        vertexList[10][2] = 18;
+        vertexList[10][3] = 17;
+        vertexList[11][0] = 8;
+        vertexList[11][1] = 12;
+        vertexList[11][2] = 19;
+        vertexList[11][3] = 18;
+        vertexList[12][0] = 16;
+        vertexList[12][1] = 17;
+        vertexList[12][2] = 24;
+        vertexList[12][3] = 23;
+        vertexList[13][0] = 17;
+        vertexList[13][1] = 18;
+        vertexList[13][2] = 25;
+        vertexList[13][3] = 24;
+        vertexList[14][0] = 18;
+        vertexList[14][1] = 19;
+        vertexList[14][2] = 26;
+        vertexList[14][3] = 25;
+        vertexList[15][0] = 23;
+        vertexList[15][1] = 24;
+        vertexList[15][2] = 31;
+        vertexList[15][3] = 30;
+        vertexList[16][0] = 24;
+        vertexList[16][1] = 25;
+        vertexList[16][2] = 32;
+        vertexList[16][3] = 31;
+        vertexList[17][0] = 25;
+        vertexList[17][1] = 26;
+        vertexList[17][2] = 33;
+        vertexList[17][3] = 32;
+        vertexList[18][0] = 12;
+        vertexList[18][1] = 13;
+        vertexList[18][2] = 20;
+        vertexList[18][3] = 19;
+        vertexList[19][0] = 13;
+        vertexList[19][1] = 14;
+        vertexList[19][2] = 21;
+        vertexList[19][3] = 20;
+        vertexList[20][0] = 14;
+        vertexList[20][1] = 15;
+        vertexList[20][2] = 22;
+        vertexList[20][3] = 21;
+        vertexList[21][0] = 19;
+        vertexList[21][1] = 20;
+        vertexList[21][2] = 27;
+        vertexList[21][3] = 26;
+        vertexList[22][0] = 20;
+        vertexList[22][1] = 21;
+        vertexList[22][2] = 28;
+        vertexList[22][3] = 27;
+        vertexList[23][0] = 21;
+        vertexList[23][1] = 22;
+        vertexList[23][2] = 29;
+        vertexList[23][3] = 28;
+        vertexList[24][0] = 26;
+        vertexList[24][1] = 27;
+        vertexList[24][2] = 34;
+        vertexList[24][3] = 33;
+        vertexList[25][0] = 27;
+        vertexList[25][1] = 28;
+        vertexList[25][2] = 35;
+        vertexList[25][3] = 34;
+        vertexList[26][0] = 28;
+        vertexList[26][1] = 29;
+        vertexList[26][2] = 36;
+        vertexList[26][3] = 35;
     }
-    
+
     private void initVertices() {
         vertices[0] = new Point(0, 3);
         vertices[1] = new Point(1, 2);
@@ -324,5 +450,34 @@ public class CubeFrame extends javax.swing.JFrame {
         vertices[34] = new Point(4, 8);
         vertices[35] = new Point(5, 7);
         vertices[36] = new Point(6, 6);
+    }
+
+    private Color getColor(cubeColor c) {
+        Color newColor;
+        switch (c) {
+            case WHITE:
+                newColor = Color.WHITE;
+                break;
+            case RED:
+                newColor = Color.RED;
+                break;
+            case BLUE:
+                newColor = Color.BLUE;
+                break;
+            case ORANGE:
+                newColor = Color.ORANGE;
+                break;
+            case GREEN:
+                newColor = Color.GREEN;
+                break;
+            case YELLOW:
+                newColor = Color.YELLOW;
+                break;
+            default:
+                newColor = Color.WHITE;
+                break;
+                
+        }
+        return newColor;
     }
 }
