@@ -554,13 +554,13 @@ public class Cube {
 	 * @param newCubeColor
 	 */
 	private void move_2_1(cubeColor[][] newCubeColor) {
-		newCubeColor[3][1] = this.cubeState[0][1];
+		newCubeColor[3][7] = this.cubeState[0][1];
 		newCubeColor[3][4] = this.cubeState[0][4];
-		newCubeColor[3][7] = this.cubeState[0][7];
+		newCubeColor[3][1] = this.cubeState[0][7];
 
-		newCubeColor[5][1] = this.cubeState[3][1];
+		newCubeColor[5][1] = this.cubeState[3][7];
 		newCubeColor[5][4] = this.cubeState[3][4];
-		newCubeColor[5][7] = this.cubeState[3][7];
+		newCubeColor[5][7] = this.cubeState[3][1];
 
 		newCubeColor[1][1] = this.cubeState[5][1];
 		newCubeColor[1][4] = this.cubeState[5][4];
@@ -616,14 +616,14 @@ public class Cube {
 		newCubeColor[0][3] = this.cubeState[1][3];
 		newCubeColor[0][6] = this.cubeState[1][6];
 
-		newCubeColor[1][6] = this.cubeState[2][0];
-		newCubeColor[1][3] = this.cubeState[2][1];
-		newCubeColor[1][0] = this.cubeState[2][2];
-		newCubeColor[1][7] = this.cubeState[2][3];
-		newCubeColor[1][1] = this.cubeState[2][5];
-		newCubeColor[1][8] = this.cubeState[2][6];
-		newCubeColor[1][5] = this.cubeState[2][7];
-		newCubeColor[1][2] = this.cubeState[2][8];
+		newCubeColor[2][6] = this.cubeState[2][0];
+		newCubeColor[2][3] = this.cubeState[2][1];
+		newCubeColor[2][0] = this.cubeState[2][2];
+		newCubeColor[2][7] = this.cubeState[2][3];
+		newCubeColor[2][1] = this.cubeState[2][5];
+		newCubeColor[2][8] = this.cubeState[2][6];
+		newCubeColor[2][5] = this.cubeState[2][7];
+		newCubeColor[2][2] = this.cubeState[2][8];
 	}
 
 	/**
