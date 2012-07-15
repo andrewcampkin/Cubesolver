@@ -24,7 +24,7 @@ public class CubeFrame extends javax.swing.JFrame {
         //made up of 27 squares
         vertexList = new int[27][4];
         initVertexList();
-        
+
     }
 
     /**
@@ -51,6 +51,9 @@ public class CubeFrame extends javax.swing.JFrame {
                 drawCube(g);
             }
         };
+        jButton7 = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
+        jButton9 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -113,6 +116,27 @@ public class CubeFrame extends javax.swing.JFrame {
         canvas1.setMinimumSize(new java.awt.Dimension(50, 50));
         canvas1.setPreferredSize(new java.awt.Dimension(553, 335));
 
+        jButton7.setText("Up");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+
+        jButton8.setText("Down");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
+
+        jButton9.setText("Reset");
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -128,13 +152,18 @@ public class CubeFrame extends javax.swing.JFrame {
                             .addComponent(jButton5)
                             .addComponent(jButton2)
                             .addComponent(jLabel1)
-                            .addComponent(jButton6)))
+                            .addComponent(jButton6)
+                            .addComponent(jButton9)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(288, 288, 288)
-                        .addComponent(jButton3))
+                        .addGap(189, 189, 189)
+                        .addComponent(jButton3)
+                        .addGap(178, 178, 178)
+                        .addComponent(jButton7))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(287, 287, 287)
-                        .addComponent(jButton4)))
+                        .addGap(178, 178, 178)
+                        .addComponent(jButton4)
+                        .addGap(174, 174, 174)
+                        .addComponent(jButton8)))
                 .addContainerGap(45, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -149,17 +178,23 @@ public class CubeFrame extends javax.swing.JFrame {
                         .addGap(20, 20, 20)
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton9)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton6))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(115, 115, 115)
                         .addComponent(jButton1))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jButton3)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton3)
+                            .addComponent(jButton7))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(canvas1, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton4)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton4)
+                    .addComponent(jButton8))
                 .addContainerGap(45, Short.MAX_VALUE))
         );
 
@@ -169,18 +204,27 @@ public class CubeFrame extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         checkScrambled();
+        cube.changeCube(1, 1);
+        cube.changeCube(1, 2);
+        cube.changeCube(1, 3);
         drawCube(canvas1.getGraphics());
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
         checkScrambled();
+        cube.changeCube(0, 4);
+        cube.changeCube(0, 5);
+        cube.changeCube(0, 6);
         drawCube(canvas1.getGraphics());
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         checkScrambled();
+        cube.changeCube(0, 7);
+        cube.changeCube(0, 8);
+        cube.changeCube(0, 9);
         drawCube(canvas1.getGraphics());
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -188,6 +232,9 @@ public class CubeFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         checkScrambled();
+        cube.changeCube(1, 7);
+        cube.changeCube(1, 8);
+        cube.changeCube(1, 9);
         drawCube(canvas1.getGraphics());
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -204,6 +251,31 @@ public class CubeFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+        checkScrambled();
+        cube.changeCube(1, 4);
+        cube.changeCube(1, 5);
+        cube.changeCube(1, 6);
+        drawCube(canvas1.getGraphics());
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        // TODO add your handling code here:
+        checkScrambled();
+        cube.changeCube(0, 1);
+        cube.changeCube(0, 2);
+        cube.changeCube(0, 3);
+        drawCube(canvas1.getGraphics());
+    }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        //reset button
+        cube = new Cube();
+        checkScrambled();
+        drawCube(canvas1.getGraphics());
+    }//GEN-LAST:event_jButton9ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -254,6 +326,9 @@ public class CubeFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
     // My variables
@@ -264,7 +339,6 @@ public class CubeFrame extends javax.swing.JFrame {
     /**
      * Helper method to check if the cube is solved yet.
      */
-    // <editor-fold defaultstate="collapsed" desc="Check Scrambled Method">
     private void checkScrambled() {
         if (cube.isSolved()) {
             jLabel1.setText("Solved");
@@ -298,6 +372,8 @@ public class CubeFrame extends javax.swing.JFrame {
             Color nextColor = getColor(c);
             g.setColor(nextColor);
             g.fillPolygon(p);
+            g.setColor(Color.BLACK);
+            g.drawPolygon(p);
         }
     }
 
@@ -476,7 +552,7 @@ public class CubeFrame extends javax.swing.JFrame {
             default:
                 newColor = Color.WHITE;
                 break;
-                
+
         }
         return newColor;
     }
