@@ -74,6 +74,7 @@ public class CubeFrame extends javax.swing.JFrame {
         jButton27 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Cube Solver");
 
         jButton1.setText("Left");
         jButton1.setToolTipText("Rotate Cube Left");
